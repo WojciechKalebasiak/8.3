@@ -16,7 +16,8 @@
     "build:autoprefixer": "autoprefixer-cli -o css/style.css css/style.css",
     "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
     "watch": "npm-run-all build -p watch:*",
-    "watch:sassprefixer": "onchange sass -- npm-run-all node-sass --output-style expanded --source-map true -o css sass -p autoprefixer-cli",
+    "watch-helper": "npm run build:sass && npm run build:autoprefixer",
+    "watch:sassprefixer": "onchange sass/*.scss -- npm run watch-helper",
     "watch:browsersync": "browser-sync start --server --files css/*.css *.html"
   },
   "repository": {
